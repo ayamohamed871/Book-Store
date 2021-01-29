@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6c6d22d443b406aad63db41fcd7a8a3" Name="Diagram1">
+        <EntityTypeShape EntityType="BlueBookModel.Authors" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Books" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Categories" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Publishers" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Customers" Width="1.5" PointX="6" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Employees" Width="1.5" PointX="8.25" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Invoices" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.InvoicesDetails" Width="1.5" PointX="7.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Orders" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.OrdersDetails" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Sales" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Stocks" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BlueBookModel.Stores" Width="1.5" PointX="6" PointY="13.75" IsExpanded="true" />
+        <AssociationConnector Association="BlueBookModel.FK__Books__Author_ID__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__Books__Category___182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__Sales__Book_ID__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__Stocks__Book_ID__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK_Books_Books_Publishers" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__Stocks__Category__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__Orders__Customer__6383C8BA" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__Employees__Store__34C8D9D1" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__InvoicesD__Invoi__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__InvoicesD__Book___5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__Orders__Store_ID__628FA481" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__OrdersDet__Order__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="BlueBookModel.FK__OrdersDet__Book___6754599E" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

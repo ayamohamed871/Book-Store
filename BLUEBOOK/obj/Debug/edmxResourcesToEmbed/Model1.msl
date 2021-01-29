@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BlueBookModelStoreContainer" CdmEntityContainer="BlueBookEntities">
+    <EntitySetMapping Name="Authors">
+      <EntityTypeMapping TypeName="BlueBookModel.Authors">
+        <MappingFragment StoreEntitySet="Authors">
+          <ScalarProperty Name="Author_ID" ColumnName="Author ID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Books">
+      <EntityTypeMapping TypeName="BlueBookModel.Books">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+          <ScalarProperty Name="Book_Name" ColumnName="Book Name" />
+          <ScalarProperty Name="Writing_data" ColumnName="Writing data" />
+          <ScalarProperty Name="Publishing_data" ColumnName="Publishing data" />
+          <ScalarProperty Name="Edition_Number" ColumnName="Edition Number" />
+          <ScalarProperty Name="Language" ColumnName="Language" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category ID" />
+          <ScalarProperty Name="Author_ID" ColumnName="Author ID" />
+          <ScalarProperty Name="Publisher_ID" ColumnName="Publisher ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="BlueBookModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="Category_ID" ColumnName="Category ID" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Publishers">
+      <EntityTypeMapping TypeName="BlueBookModel.Publishers">
+        <MappingFragment StoreEntitySet="Publishers">
+          <ScalarProperty Name="Publisher_ID" ColumnName="Publisher ID" />
+          <ScalarProperty Name="Publisher_Name" ColumnName="Publisher Name" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="BlueBookModel.Customers">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer ID" />
+          <ScalarProperty Name="Customer_FName" ColumnName="Customer FName" />
+          <ScalarProperty Name="Customer_LName" ColumnName="Customer LName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+          <ScalarProperty Name="Email_Address" ColumnName="Email Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="BlueBookModel.Employees">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee ID" />
+          <ScalarProperty Name="Store_ID" ColumnName="Store ID" />
+          <ScalarProperty Name="Employee_FName" ColumnName="Employee FName" />
+          <ScalarProperty Name="Employee_LName" ColumnName="Employee LName" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Permission" ColumnName="Permission" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Invoices">
+      <EntityTypeMapping TypeName="BlueBookModel.Invoices">
+        <MappingFragment StoreEntitySet="Invoices">
+          <ScalarProperty Name="Invoice_Number" ColumnName="Invoice Number" />
+          <ScalarProperty Name="Publisher_ID" ColumnName="Publisher ID" />
+          <ScalarProperty Name="Invoice_Data" ColumnName="Invoice Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InvoicesDetails">
+      <EntityTypeMapping TypeName="BlueBookModel.InvoicesDetails">
+        <MappingFragment StoreEntitySet="InvoicesDetails">
+          <ScalarProperty Name="Invoice_Number" ColumnName="Invoice Number" />
+          <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+          <ScalarProperty Name="Purchasing_Price" ColumnName="Purchasing Price" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="BlueBookModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="Order_Number" ColumnName="Order Number" />
+          <ScalarProperty Name="Store_ID" ColumnName="Store ID" />
+          <ScalarProperty Name="Customer_ID" ColumnName="Customer ID" />
+          <ScalarProperty Name="Employee_ID" ColumnName="Employee ID" />
+          <ScalarProperty Name="Tender_Type" ColumnName="Tender Type" />
+          <ScalarProperty Name="Order_Data" ColumnName="Order Data" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrdersDetails">
+      <EntityTypeMapping TypeName="BlueBookModel.OrdersDetails">
+        <MappingFragment StoreEntitySet="OrdersDetails">
+          <ScalarProperty Name="Order_Number" ColumnName="Order Number" />
+          <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+          <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sales">
+      <EntityTypeMapping TypeName="BlueBookModel.Sales">
+        <MappingFragment StoreEntitySet="Sales">
+          <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+          <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+          <ScalarProperty Name="Purchasing_Price" ColumnName="Purchasing Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stocks">
+      <EntityTypeMapping TypeName="BlueBookModel.Stocks">
+        <MappingFragment StoreEntitySet="Stocks">
+          <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category ID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Number_of_books" ColumnName="Number of books" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="BlueBookModel.Stores">
+        <MappingFragment StoreEntitySet="Stores">
+          <ScalarProperty Name="Store_ID" ColumnName="Store ID" />
+          <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+          <ScalarProperty Name="Email_Address" ColumnName="Email Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,969 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BlueBookModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="BlueBookModelStoreContainer">
+          <EntitySet Name="Authors" EntityType="BlueBookModel.Store.Authors" store:Type="Tables" Schema="Books" />
+          <EntitySet Name="Books" EntityType="BlueBookModel.Store.Books" store:Type="Tables" Schema="Books" />
+          <EntitySet Name="Categories" EntityType="BlueBookModel.Store.Categories" store:Type="Tables" Schema="Books" />
+          <EntitySet Name="Publishers" EntityType="BlueBookModel.Store.Publishers" store:Type="Tables" Schema="Books" />
+          <EntitySet Name="Customers" EntityType="BlueBookModel.Store.Customers" store:Type="Tables" Schema="Humans" />
+          <EntitySet Name="Employees" EntityType="BlueBookModel.Store.Employees" store:Type="Tables" Schema="Humans" />
+          <EntitySet Name="Invoices" EntityType="BlueBookModel.Store.Invoices" store:Type="Tables" Schema="Orders" />
+          <EntitySet Name="InvoicesDetails" EntityType="BlueBookModel.Store.InvoicesDetails" store:Type="Tables" store:Schema="Orders" store:Name="InvoicesDetails">
+            <DefiningQuery>SELECT 
+      [InvoicesDetails].[Invoice Number] AS [Invoice Number], 
+      [InvoicesDetails].[Book ID] AS [Book ID], 
+      [InvoicesDetails].[Purchasing Price] AS [Purchasing Price], 
+      [InvoicesDetails].[Tax] AS [Tax], 
+      [InvoicesDetails].[Discount] AS [Discount]
+      FROM [Orders].[InvoicesDetails] AS [InvoicesDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Orders" EntityType="BlueBookModel.Store.Orders" store:Type="Tables" Schema="Orders" />
+          <EntitySet Name="OrdersDetails" EntityType="BlueBookModel.Store.OrdersDetails" store:Type="Tables" store:Schema="Orders" store:Name="OrdersDetails">
+            <DefiningQuery>SELECT 
+      [OrdersDetails].[Order Number] AS [Order Number], 
+      [OrdersDetails].[Book ID] AS [Book ID], 
+      [OrdersDetails].[Sales Price] AS [Sales Price], 
+      [OrdersDetails].[Tax] AS [Tax], 
+      [OrdersDetails].[Discount] AS [Discount]
+      FROM [Orders].[OrdersDetails] AS [OrdersDetails]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Sales" EntityType="BlueBookModel.Store.Sales" store:Type="Tables" Schema="Orders" />
+          <EntitySet Name="Stocks" EntityType="BlueBookModel.Store.Stocks" store:Type="Tables" Schema="Orders" />
+          <EntitySet Name="Stores" EntityType="BlueBookModel.Store.Stores" store:Type="Tables" Schema="Orders" />
+          <AssociationSet Name="FK__Books__Author ID__1920BF5C" Association="BlueBookModel.Store.FK__Books__Author ID__1920BF5C">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Books__Category __182C9B23" Association="BlueBookModel.Store.FK__Books__Category __182C9B23">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Store__34C8D9D1" Association="BlueBookModel.Store.FK__Employees__Store__34C8D9D1">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoicesD__Book __5FB337D6" Association="BlueBookModel.Store.FK__InvoicesD__Book __5FB337D6">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="InvoicesDetails" EntitySet="InvoicesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoicesD__Invoi__5EBF139D" Association="BlueBookModel.Store.FK__InvoicesD__Invoi__5EBF139D">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="InvoicesDetails" EntitySet="InvoicesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Customer__6383C8BA" Association="BlueBookModel.Store.FK__Orders__Customer__6383C8BA">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Store ID__628FA481" Association="BlueBookModel.Store.FK__Orders__Store ID__628FA481">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersDet__Book __6754599E" Association="BlueBookModel.Store.FK__OrdersDet__Book __6754599E">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="OrdersDetails" EntitySet="OrdersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersDet__Order__66603565" Association="BlueBookModel.Store.FK__OrdersDet__Order__66603565">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrdersDetails" EntitySet="OrdersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sales__Book ID__2B3F6F97" Association="BlueBookModel.Store.FK__Sales__Book ID__2B3F6F97">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stocks__Book ID__1BFD2C07" Association="BlueBookModel.Store.FK__Stocks__Book ID__1BFD2C07">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Stocks" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stocks__Category__1CF15040" Association="BlueBookModel.Store.FK__Stocks__Category__1CF15040">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Stocks" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Books_Publishers" Association="BlueBookModel.Store.FK_Books_Books_Publishers">
+            <End Role="Publishers" EntitySet="Publishers" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="Author ID" />
+          </Key>
+          <Property Name="Author ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Nationality" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="Book ID" />
+          </Key>
+          <Property Name="Book ID" Type="int" Nullable="false" />
+          <Property Name="Book Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Writing data" Type="date" />
+          <Property Name="Publishing data" Type="date" />
+          <Property Name="Edition Number" Type="int" />
+          <Property Name="Language" Type="varchar" MaxLength="50" />
+          <Property Name="Category ID" Type="int" Nullable="false" />
+          <Property Name="Author ID" Type="int" Nullable="false" />
+          <Property Name="Publisher ID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Category ID" />
+          </Key>
+          <Property Name="Category ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Category Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="Publisher ID" />
+          </Key>
+          <Property Name="Publisher ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Publisher Name" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="Street" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Phone Number" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Customer ID" />
+          </Key>
+          <Property Name="Customer ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Customer FName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Customer LName" Type="varchar" MaxLength="150" />
+          <Property Name="Address" Type="varchar" MaxLength="250" />
+          <Property Name="Phone Number" Type="varchar" MaxLength="20" />
+          <Property Name="Email Address" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Employee ID" />
+          </Key>
+          <Property Name="Employee ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Store ID" Type="int" Nullable="false" />
+          <Property Name="Employee FName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Employee LName" Type="varchar" MaxLength="150" />
+          <Property Name="Position" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Permission" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Phone Number" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="Invoice Number" />
+          </Key>
+          <Property Name="Invoice Number" Type="int" Nullable="false" />
+          <Property Name="Publisher ID" Type="int" Nullable="false" />
+          <Property Name="Invoice Data" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BlueBook.Orders.InvoicesDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="InvoicesDetails">
+          <Key>
+            <PropertyRef Name="Invoice Number" />
+            <PropertyRef Name="Book ID" />
+            <PropertyRef Name="Purchasing Price" />
+            <PropertyRef Name="Tax" />
+            <PropertyRef Name="Discount" />
+          </Key>
+          <Property Name="Invoice Number" Type="int" Nullable="false" />
+          <Property Name="Book ID" Type="int" Nullable="false" />
+          <Property Name="Purchasing Price" Type="int" Nullable="false" />
+          <Property Name="Tax" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order Number" />
+          </Key>
+          <Property Name="Order Number" Type="int" Nullable="false" />
+          <Property Name="Store ID" Type="int" Nullable="false" />
+          <Property Name="Customer ID" Type="int" Nullable="false" />
+          <Property Name="Employee ID" Type="int" />
+          <Property Name="Tender Type" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Order Data" Type="date" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'BlueBook.Orders.OrdersDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="OrdersDetails">
+          <Key>
+            <PropertyRef Name="Order Number" />
+            <PropertyRef Name="Book ID" />
+            <PropertyRef Name="Sales Price" />
+            <PropertyRef Name="Tax" />
+            <PropertyRef Name="Discount" />
+          </Key>
+          <Property Name="Order Number" Type="int" Nullable="false" />
+          <Property Name="Book ID" Type="int" Nullable="false" />
+          <Property Name="Sales Price" Type="int" Nullable="false" />
+          <Property Name="Tax" Type="int" Nullable="false" />
+          <Property Name="Discount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Book ID" />
+          </Key>
+          <Property Name="Book ID" Type="int" Nullable="false" />
+          <Property Name="Sales Price" Type="int" Nullable="false" />
+          <Property Name="Purchasing Price" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stocks">
+          <Key>
+            <PropertyRef Name="Book ID" />
+          </Key>
+          <Property Name="Book ID" Type="int" Nullable="false" />
+          <Property Name="Category ID" Type="int" Nullable="false" />
+          <Property Name="Location" Type="int" Nullable="false" />
+          <Property Name="Number of books" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stores">
+          <Key>
+            <PropertyRef Name="Store ID" />
+          </Key>
+          <Property Name="Store ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Store Name" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Street" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Phone Number" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Email Address" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <Association Name="FK__Books__Author ID__1920BF5C">
+          <End Role="Authors" Type="BlueBookModel.Store.Authors" Multiplicity="1" />
+          <End Role="Books" Type="BlueBookModel.Store.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Author ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Author ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Books__Category __182C9B23">
+          <End Role="Categories" Type="BlueBookModel.Store.Categories" Multiplicity="1" />
+          <End Role="Books" Type="BlueBookModel.Store.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Category ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Store__34C8D9D1">
+          <End Role="Stores" Type="BlueBookModel.Store.Stores" Multiplicity="1" />
+          <End Role="Employees" Type="BlueBookModel.Store.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="Store ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Store ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoicesD__Book __5FB337D6">
+          <End Role="Sales" Type="BlueBookModel.Store.Sales" Multiplicity="1" />
+          <End Role="InvoicesDetails" Type="BlueBookModel.Store.InvoicesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Book ID" />
+            </Principal>
+            <Dependent Role="InvoicesDetails">
+              <PropertyRef Name="Book ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoicesD__Invoi__5EBF139D">
+          <End Role="Invoices" Type="BlueBookModel.Store.Invoices" Multiplicity="1" />
+          <End Role="InvoicesDetails" Type="BlueBookModel.Store.InvoicesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoices">
+              <PropertyRef Name="Invoice Number" />
+            </Principal>
+            <Dependent Role="InvoicesDetails">
+              <PropertyRef Name="Invoice Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Customer__6383C8BA">
+          <End Role="Customers" Type="BlueBookModel.Store.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="BlueBookModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Customer ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Customer ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Store ID__628FA481">
+          <End Role="Stores" Type="BlueBookModel.Store.Stores" Multiplicity="1" />
+          <End Role="Orders" Type="BlueBookModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="Store ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Store ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersDet__Book __6754599E">
+          <End Role="Sales" Type="BlueBookModel.Store.Sales" Multiplicity="1" />
+          <End Role="OrdersDetails" Type="BlueBookModel.Store.OrdersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Book ID" />
+            </Principal>
+            <Dependent Role="OrdersDetails">
+              <PropertyRef Name="Book ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersDet__Order__66603565">
+          <End Role="Orders" Type="BlueBookModel.Store.Orders" Multiplicity="1" />
+          <End Role="OrdersDetails" Type="BlueBookModel.Store.OrdersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order Number" />
+            </Principal>
+            <Dependent Role="OrdersDetails">
+              <PropertyRef Name="Order Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sales__Book ID__2B3F6F97">
+          <End Role="Books" Type="BlueBookModel.Store.Books" Multiplicity="1" />
+          <End Role="Sales" Type="BlueBookModel.Store.Sales" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Book ID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="Book ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stocks__Book ID__1BFD2C07">
+          <End Role="Books" Type="BlueBookModel.Store.Books" Multiplicity="1" />
+          <End Role="Stocks" Type="BlueBookModel.Store.Stocks" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Book ID" />
+            </Principal>
+            <Dependent Role="Stocks">
+              <PropertyRef Name="Book ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stocks__Category__1CF15040">
+          <End Role="Categories" Type="BlueBookModel.Store.Categories" Multiplicity="1" />
+          <End Role="Stocks" Type="BlueBookModel.Store.Stocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category ID" />
+            </Principal>
+            <Dependent Role="Stocks">
+              <PropertyRef Name="Category ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Books_Publishers">
+          <End Role="Publishers" Type="BlueBookModel.Store.Publishers" Multiplicity="1" />
+          <End Role="Books" Type="BlueBookModel.Store.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publishers">
+              <PropertyRef Name="Publisher ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Publisher ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BlueBookModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BlueBookEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="BlueBookModel.Authors" />
+          <EntitySet Name="Books" EntityType="BlueBookModel.Books" />
+          <EntitySet Name="Categories" EntityType="BlueBookModel.Categories" />
+          <EntitySet Name="Publishers" EntityType="BlueBookModel.Publishers" />
+          <EntitySet Name="Customers" EntityType="BlueBookModel.Customers" />
+          <EntitySet Name="Employees" EntityType="BlueBookModel.Employees" />
+          <EntitySet Name="Invoices" EntityType="BlueBookModel.Invoices" />
+          <EntitySet Name="InvoicesDetails" EntityType="BlueBookModel.InvoicesDetails" />
+          <EntitySet Name="Orders" EntityType="BlueBookModel.Orders" />
+          <EntitySet Name="OrdersDetails" EntityType="BlueBookModel.OrdersDetails" />
+          <EntitySet Name="Sales" EntityType="BlueBookModel.Sales" />
+          <EntitySet Name="Stocks" EntityType="BlueBookModel.Stocks" />
+          <EntitySet Name="Stores" EntityType="BlueBookModel.Stores" />
+          <AssociationSet Name="FK__Books__Author_ID__1920BF5C" Association="BlueBookModel.FK__Books__Author_ID__1920BF5C">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Books__Category___182C9B23" Association="BlueBookModel.FK__Books__Category___182C9B23">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Sales__Book_ID__2B3F6F97" Association="BlueBookModel.FK__Sales__Book_ID__2B3F6F97">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Sales" EntitySet="Sales" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stocks__Book_ID__1BFD2C07" Association="BlueBookModel.FK__Stocks__Book_ID__1BFD2C07">
+            <End Role="Books" EntitySet="Books" />
+            <End Role="Stocks" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Books_Books_Publishers" Association="BlueBookModel.FK_Books_Books_Publishers">
+            <End Role="Publishers" EntitySet="Publishers" />
+            <End Role="Books" EntitySet="Books" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stocks__Category__1CF15040" Association="BlueBookModel.FK__Stocks__Category__1CF15040">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Stocks" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Customer__6383C8BA" Association="BlueBookModel.FK__Orders__Customer__6383C8BA">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Store__34C8D9D1" Association="BlueBookModel.FK__Employees__Store__34C8D9D1">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="Employees" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoicesD__Invoi__5EBF139D" Association="BlueBookModel.FK__InvoicesD__Invoi__5EBF139D">
+            <End Role="Invoices" EntitySet="Invoices" />
+            <End Role="InvoicesDetails" EntitySet="InvoicesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__InvoicesD__Book___5FB337D6" Association="BlueBookModel.FK__InvoicesD__Book___5FB337D6">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="InvoicesDetails" EntitySet="InvoicesDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Store_ID__628FA481" Association="BlueBookModel.FK__Orders__Store_ID__628FA481">
+            <End Role="Stores" EntitySet="Stores" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersDet__Order__66603565" Association="BlueBookModel.FK__OrdersDet__Order__66603565">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrdersDetails" EntitySet="OrdersDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrdersDet__Book___6754599E" Association="BlueBookModel.FK__OrdersDet__Book___6754599E">
+            <End Role="Sales" EntitySet="Sales" />
+            <End Role="OrdersDetails" EntitySet="OrdersDetails" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Authors">
+          <Key>
+            <PropertyRef Name="Author_ID" />
+          </Key>
+          <Property Name="Author_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Nationality" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Books" Relationship="BlueBookModel.FK__Books__Author_ID__1920BF5C" FromRole="Authors" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Books">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Book_Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Writing_data" Type="DateTime" Precision="0" />
+          <Property Name="Publishing_data" Type="DateTime" Precision="0" />
+          <Property Name="Edition_Number" Type="Int32" />
+          <Property Name="Language" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="Author_ID" Type="Int32" Nullable="false" />
+          <Property Name="Publisher_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Authors" Relationship="BlueBookModel.FK__Books__Author_ID__1920BF5C" FromRole="Books" ToRole="Authors" />
+          <NavigationProperty Name="Categories" Relationship="BlueBookModel.FK__Books__Category___182C9B23" FromRole="Books" ToRole="Categories" />
+          <NavigationProperty Name="Sales" Relationship="BlueBookModel.FK__Sales__Book_ID__2B3F6F97" FromRole="Books" ToRole="Sales" />
+          <NavigationProperty Name="Stocks" Relationship="BlueBookModel.FK__Stocks__Book_ID__1BFD2C07" FromRole="Books" ToRole="Stocks" />
+          <NavigationProperty Name="Publishers" Relationship="BlueBookModel.FK_Books_Books_Publishers" FromRole="Books" ToRole="Publishers" />
+        </EntityType>
+        <EntityType Name="Categories">
+          <Key>
+            <PropertyRef Name="Category_ID" />
+          </Key>
+          <Property Name="Category_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Category_Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="350" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Books" Relationship="BlueBookModel.FK__Books__Category___182C9B23" FromRole="Categories" ToRole="Books" />
+          <NavigationProperty Name="Stocks" Relationship="BlueBookModel.FK__Stocks__Category__1CF15040" FromRole="Categories" ToRole="Stocks" />
+        </EntityType>
+        <EntityType Name="Publishers">
+          <Key>
+            <PropertyRef Name="Publisher_ID" />
+          </Key>
+          <Property Name="Publisher_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Publisher_Name" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Phone_Number" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Books" Relationship="BlueBookModel.FK_Books_Books_Publishers" FromRole="Publishers" ToRole="Books" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Customer_ID" />
+          </Key>
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Customer_FName" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Customer_LName" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Orders" Relationship="BlueBookModel.FK__Orders__Customer__6383C8BA" FromRole="Customers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="Employee_ID" />
+          </Key>
+          <Property Name="Employee_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Store_ID" Type="Int32" Nullable="false" />
+          <Property Name="Employee_FName" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Employee_LName" Type="String" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Permission" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Phone_Number" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Stores" Relationship="BlueBookModel.FK__Employees__Store__34C8D9D1" FromRole="Employees" ToRole="Stores" />
+        </EntityType>
+        <EntityType Name="Invoices">
+          <Key>
+            <PropertyRef Name="Invoice_Number" />
+          </Key>
+          <Property Name="Invoice_Number" Type="Int32" Nullable="false" />
+          <Property Name="Publisher_ID" Type="Int32" Nullable="false" />
+          <Property Name="Invoice_Data" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="InvoicesDetails" Relationship="BlueBookModel.FK__InvoicesD__Invoi__5EBF139D" FromRole="Invoices" ToRole="InvoicesDetails" />
+        </EntityType>
+        <EntityType Name="InvoicesDetails">
+          <Key>
+            <PropertyRef Name="Invoice_Number" />
+            <PropertyRef Name="Book_ID" />
+            <PropertyRef Name="Purchasing_Price" />
+            <PropertyRef Name="Tax" />
+            <PropertyRef Name="Discount" />
+          </Key>
+          <Property Name="Invoice_Number" Type="Int32" Nullable="false" />
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Purchasing_Price" Type="Int32" Nullable="false" />
+          <Property Name="Tax" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Invoices" Relationship="BlueBookModel.FK__InvoicesD__Invoi__5EBF139D" FromRole="InvoicesDetails" ToRole="Invoices" />
+          <NavigationProperty Name="Sales" Relationship="BlueBookModel.FK__InvoicesD__Book___5FB337D6" FromRole="InvoicesDetails" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+          </Key>
+          <Property Name="Order_Number" Type="Int32" Nullable="false" />
+          <Property Name="Store_ID" Type="Int32" Nullable="false" />
+          <Property Name="Customer_ID" Type="Int32" Nullable="false" />
+          <Property Name="Employee_ID" Type="Int32" />
+          <Property Name="Tender_Type" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Order_Data" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Customers" Relationship="BlueBookModel.FK__Orders__Customer__6383C8BA" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="Stores" Relationship="BlueBookModel.FK__Orders__Store_ID__628FA481" FromRole="Orders" ToRole="Stores" />
+          <NavigationProperty Name="OrdersDetails" Relationship="BlueBookModel.FK__OrdersDet__Order__66603565" FromRole="Orders" ToRole="OrdersDetails" />
+        </EntityType>
+        <EntityType Name="OrdersDetails">
+          <Key>
+            <PropertyRef Name="Order_Number" />
+            <PropertyRef Name="Book_ID" />
+            <PropertyRef Name="Sales_Price" />
+            <PropertyRef Name="Tax" />
+            <PropertyRef Name="Discount" />
+          </Key>
+          <Property Name="Order_Number" Type="Int32" Nullable="false" />
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Sales_Price" Type="Int32" Nullable="false" />
+          <Property Name="Tax" Type="Int32" Nullable="false" />
+          <Property Name="Discount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Orders" Relationship="BlueBookModel.FK__OrdersDet__Order__66603565" FromRole="OrdersDetails" ToRole="Orders" />
+          <NavigationProperty Name="Sales" Relationship="BlueBookModel.FK__OrdersDet__Book___6754599E" FromRole="OrdersDetails" ToRole="Sales" />
+        </EntityType>
+        <EntityType Name="Sales">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Sales_Price" Type="Int32" Nullable="false" />
+          <Property Name="Purchasing_Price" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="BlueBookModel.FK__Sales__Book_ID__2B3F6F97" FromRole="Sales" ToRole="Books" />
+          <NavigationProperty Name="InvoicesDetails" Relationship="BlueBookModel.FK__InvoicesD__Book___5FB337D6" FromRole="Sales" ToRole="InvoicesDetails" />
+          <NavigationProperty Name="OrdersDetails" Relationship="BlueBookModel.FK__OrdersDet__Book___6754599E" FromRole="Sales" ToRole="OrdersDetails" />
+        </EntityType>
+        <EntityType Name="Stocks">
+          <Key>
+            <PropertyRef Name="Book_ID" />
+          </Key>
+          <Property Name="Book_ID" Type="Int32" Nullable="false" />
+          <Property Name="Category_ID" Type="Int32" Nullable="false" />
+          <Property Name="Location" Type="Int32" Nullable="false" />
+          <Property Name="Number_of_books" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Books" Relationship="BlueBookModel.FK__Stocks__Book_ID__1BFD2C07" FromRole="Stocks" ToRole="Books" />
+          <NavigationProperty Name="Categories" Relationship="BlueBookModel.FK__Stocks__Category__1CF15040" FromRole="Stocks" ToRole="Categories" />
+        </EntityType>
+        <EntityType Name="Stores">
+          <Key>
+            <PropertyRef Name="Store_ID" />
+          </Key>
+          <Property Name="Store_ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Store_Name" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Phone_Number" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Email_Address" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Employees" Relationship="BlueBookModel.FK__Employees__Store__34C8D9D1" FromRole="Stores" ToRole="Employees" />
+          <NavigationProperty Name="Orders" Relationship="BlueBookModel.FK__Orders__Store_ID__628FA481" FromRole="Stores" ToRole="Orders" />
+        </EntityType>
+        <Association Name="FK__Books__Author_ID__1920BF5C">
+          <End Role="Authors" Type="BlueBookModel.Authors" Multiplicity="1" />
+          <End Role="Books" Type="BlueBookModel.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Authors">
+              <PropertyRef Name="Author_ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Author_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Books__Category___182C9B23">
+          <End Role="Categories" Type="BlueBookModel.Categories" Multiplicity="1" />
+          <End Role="Books" Type="BlueBookModel.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Sales__Book_ID__2B3F6F97">
+          <End Role="Books" Type="BlueBookModel.Books" Multiplicity="1" />
+          <End Role="Sales" Type="BlueBookModel.Sales" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Book_ID" />
+            </Principal>
+            <Dependent Role="Sales">
+              <PropertyRef Name="Book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stocks__Book_ID__1BFD2C07">
+          <End Role="Books" Type="BlueBookModel.Books" Multiplicity="1" />
+          <End Role="Stocks" Type="BlueBookModel.Stocks" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Books">
+              <PropertyRef Name="Book_ID" />
+            </Principal>
+            <Dependent Role="Stocks">
+              <PropertyRef Name="Book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Books_Books_Publishers">
+          <End Role="Publishers" Type="BlueBookModel.Publishers" Multiplicity="1" />
+          <End Role="Books" Type="BlueBookModel.Books" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Publishers">
+              <PropertyRef Name="Publisher_ID" />
+            </Principal>
+            <Dependent Role="Books">
+              <PropertyRef Name="Publisher_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stocks__Category__1CF15040">
+          <End Role="Categories" Type="BlueBookModel.Categories" Multiplicity="1" />
+          <End Role="Stocks" Type="BlueBookModel.Stocks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="Category_ID" />
+            </Principal>
+            <Dependent Role="Stocks">
+              <PropertyRef Name="Category_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Customer__6383C8BA">
+          <End Role="Customers" Type="BlueBookModel.Customers" Multiplicity="1" />
+          <End Role="Orders" Type="BlueBookModel.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Customer_ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Customer_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Store__34C8D9D1">
+          <End Role="Stores" Type="BlueBookModel.Stores" Multiplicity="1" />
+          <End Role="Employees" Type="BlueBookModel.Employees" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="Store_ID" />
+            </Principal>
+            <Dependent Role="Employees">
+              <PropertyRef Name="Store_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoicesD__Invoi__5EBF139D">
+          <End Role="Invoices" Type="BlueBookModel.Invoices" Multiplicity="1" />
+          <End Role="InvoicesDetails" Type="BlueBookModel.InvoicesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Invoices">
+              <PropertyRef Name="Invoice_Number" />
+            </Principal>
+            <Dependent Role="InvoicesDetails">
+              <PropertyRef Name="Invoice_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__InvoicesD__Book___5FB337D6">
+          <End Role="Sales" Type="BlueBookModel.Sales" Multiplicity="1" />
+          <End Role="InvoicesDetails" Type="BlueBookModel.InvoicesDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Book_ID" />
+            </Principal>
+            <Dependent Role="InvoicesDetails">
+              <PropertyRef Name="Book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Store_ID__628FA481">
+          <End Role="Stores" Type="BlueBookModel.Stores" Multiplicity="1" />
+          <End Role="Orders" Type="BlueBookModel.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stores">
+              <PropertyRef Name="Store_ID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="Store_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersDet__Order__66603565">
+          <End Role="Orders" Type="BlueBookModel.Orders" Multiplicity="1" />
+          <End Role="OrdersDetails" Type="BlueBookModel.OrdersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="Order_Number" />
+            </Principal>
+            <Dependent Role="OrdersDetails">
+              <PropertyRef Name="Order_Number" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrdersDet__Book___6754599E">
+          <End Role="Sales" Type="BlueBookModel.Sales" Multiplicity="1" />
+          <End Role="OrdersDetails" Type="BlueBookModel.OrdersDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sales">
+              <PropertyRef Name="Book_ID" />
+            </Principal>
+            <Dependent Role="OrdersDetails">
+              <PropertyRef Name="Book_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BlueBookModelStoreContainer" CdmEntityContainer="BlueBookEntities">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="BlueBookModel.Authors">
+              <MappingFragment StoreEntitySet="Authors">
+                <ScalarProperty Name="Author_ID" ColumnName="Author ID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Books">
+            <EntityTypeMapping TypeName="BlueBookModel.Books">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+                <ScalarProperty Name="Book_Name" ColumnName="Book Name" />
+                <ScalarProperty Name="Writing_data" ColumnName="Writing data" />
+                <ScalarProperty Name="Publishing_data" ColumnName="Publishing data" />
+                <ScalarProperty Name="Edition_Number" ColumnName="Edition Number" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category ID" />
+                <ScalarProperty Name="Author_ID" ColumnName="Author ID" />
+                <ScalarProperty Name="Publisher_ID" ColumnName="Publisher ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="BlueBookModel.Categories">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="Category_ID" ColumnName="Category ID" />
+                <ScalarProperty Name="Category_Name" ColumnName="Category Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Publishers">
+            <EntityTypeMapping TypeName="BlueBookModel.Publishers">
+              <MappingFragment StoreEntitySet="Publishers">
+                <ScalarProperty Name="Publisher_ID" ColumnName="Publisher ID" />
+                <ScalarProperty Name="Publisher_Name" ColumnName="Publisher Name" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BlueBookModel.Customers">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer ID" />
+                <ScalarProperty Name="Customer_FName" ColumnName="Customer FName" />
+                <ScalarProperty Name="Customer_LName" ColumnName="Customer LName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BlueBookModel.Employees">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee ID" />
+                <ScalarProperty Name="Store_ID" ColumnName="Store ID" />
+                <ScalarProperty Name="Employee_FName" ColumnName="Employee FName" />
+                <ScalarProperty Name="Employee_LName" ColumnName="Employee LName" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Permission" ColumnName="Permission" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="BlueBookModel.Invoices">
+              <MappingFragment StoreEntitySet="Invoices">
+                <ScalarProperty Name="Invoice_Number" ColumnName="Invoice Number" />
+                <ScalarProperty Name="Publisher_ID" ColumnName="Publisher ID" />
+                <ScalarProperty Name="Invoice_Data" ColumnName="Invoice Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InvoicesDetails">
+            <EntityTypeMapping TypeName="BlueBookModel.InvoicesDetails">
+              <MappingFragment StoreEntitySet="InvoicesDetails">
+                <ScalarProperty Name="Invoice_Number" ColumnName="Invoice Number" />
+                <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+                <ScalarProperty Name="Purchasing_Price" ColumnName="Purchasing Price" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="BlueBookModel.Orders">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Order_Number" ColumnName="Order Number" />
+                <ScalarProperty Name="Store_ID" ColumnName="Store ID" />
+                <ScalarProperty Name="Customer_ID" ColumnName="Customer ID" />
+                <ScalarProperty Name="Employee_ID" ColumnName="Employee ID" />
+                <ScalarProperty Name="Tender_Type" ColumnName="Tender Type" />
+                <ScalarProperty Name="Order_Data" ColumnName="Order Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdersDetails">
+            <EntityTypeMapping TypeName="BlueBookModel.OrdersDetails">
+              <MappingFragment StoreEntitySet="OrdersDetails">
+                <ScalarProperty Name="Order_Number" ColumnName="Order Number" />
+                <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="BlueBookModel.Sales">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+                <ScalarProperty Name="Sales_Price" ColumnName="Sales Price" />
+                <ScalarProperty Name="Purchasing_Price" ColumnName="Purchasing Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="BlueBookModel.Stocks">
+              <MappingFragment StoreEntitySet="Stocks">
+                <ScalarProperty Name="Book_ID" ColumnName="Book ID" />
+                <ScalarProperty Name="Category_ID" ColumnName="Category ID" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Number_of_books" ColumnName="Number of books" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="BlueBookModel.Stores">
+              <MappingFragment StoreEntitySet="Stores">
+                <ScalarProperty Name="Store_ID" ColumnName="Store ID" />
+                <ScalarProperty Name="Store_Name" ColumnName="Store Name" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone Number" />
+                <ScalarProperty Name="Email_Address" ColumnName="Email Address" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
